@@ -15,7 +15,7 @@
 
 class Weaver::Error < StandardError
   attr_accessor :position, :set
-  
+
   def initialize(position, set)
     @position = position
     @set = set

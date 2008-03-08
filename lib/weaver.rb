@@ -57,7 +57,7 @@ class Weaver
   #
   def add_opening(position, text)
     check_position(position)
-    @insert_positions << Weaver::InsertPosition.new(position, - @set, text)
+    @insert_positions << Weaver::InsertPosition.new(position, @set * -1, text)
   end
 
   # Adds stuff to the weaver.

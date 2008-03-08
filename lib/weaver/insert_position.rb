@@ -37,7 +37,7 @@ class Weaver::InsertPosition
   end
 
   ### Class methods
-  
+
   # Comparison
 
   # First the positions are compared.
