@@ -14,6 +14,9 @@
 #
 # Weaver allows one to insert tags in a running text.
 #
+# Openings are added before the given character-position, while 
+# closings are added after the given character-position.
+#
 # You should only add stuff to the weaver via add_opening and
 # add_closing.
 
