@@ -52,7 +52,7 @@ class Weaver
   #
   # This makes sure that different kinds of tags are kept together
   # (opening and closing-tags in order. If <b></b> are set 1, and
-  # <i></i> set two, then overlapping <b>'s and <i>'s are kept in
+  # <i></i> set 2, then overlapping <b>'s and <i>'s are kept in
   # order, so <b>the <i>cow</i></b>, instead of <b>the
   # <i>cow</b></i>).
   #
@@ -60,7 +60,7 @@ class Weaver
   #
   def add_opening(position, text)
     check_position(position)
-    @insert_positions << Weaver::InsertPosition.new(position, @set * -1, text)
+    @insert_positions << Weaver::InsertPosition.new(position, @set, text)
   end
 
   # Adds stuff to the weaver.
@@ -71,14 +71,7 @@ class Weaver
   #
   def add_closing(position, text)
     check_position(position)
-    @insert_positions << Weaver::InsertPosition.new(position, @set, text)
-  end
-
-  # Resets the list of things to weave in.
-  #
-  def clear
-    @insert_positions = []
-    @set = 1
+    @insert_positions << Weaver::InsertPosition.new(position, @set * -1, text)
   end
 
   # Weaves in all stuff added via add_opening and add_closing.
@@ -98,6 +91,15 @@ class Weaver
 
   protected
 
+  # Resets the list of things to weave in.
+  #
+  def clear
+    @insert_positions = []
+    @set = 1
+  end
+  
+  # Sanity-checks the positions
+  #
   def check_position(position)
     if position > self.text.size
       raise Weaver::Error.new(position, @set), 'Position bigger than the weaver-text'

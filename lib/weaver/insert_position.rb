@@ -36,7 +36,7 @@ class Weaver::InsertPosition
     self.text = text
   end
 
-  ### Class methods
+  ### Methods
 
   # Comparison
 

@@ -19,12 +19,16 @@ require 'weaver/insert_position'
 require 'test/unit'
 
 class InsertPositionTest < Test::Unit::TestCase
+  ### Initialization
+
   def test_initialize
     i_p = Weaver::InsertPosition.new(10,2,"mooo")
     assert_equal 10, i_p.position
     assert_equal 2, i_p.set
     assert_equal "mooo", i_p.text
   end
+
+  ### Methods
 
   def test_compare
     # positions

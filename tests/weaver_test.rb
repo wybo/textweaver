@@ -19,39 +19,56 @@ require 'weaver'
 require 'test/unit'
 
 class WeaverTest < Test::Unit::TestCase
+  ### Initialization
+
   def test_initialize
     w = Weaver.new("kukadopalala")
     assert_equal "kukadopalala", w.text
   end
 
+  ### Methods
+
   def test_next_set
     w = Weaver.new("abc")
-    w.add_opening(1, "a")
+    w.add_opening(1, ";")
     w.next_set
-    w.add_opening(1, "a")
-    assert w.weave
+    w.add_opening(1, ":")
+    assert_equal "a;:bc", w.weave
   end
 
-  def test_insert_opening
+  def test_add_opening
     w = Weaver.new("abc")
-    w.add_opening(1, "k")
-    assert_equal "akbc", w.weave
+    w.add_opening(1, "1")
+    w.next_set
+    w.add_opening(1, "2")
+    assert_equal "a12bc", w.weave
   end
 
-  def test_insert_closing
+  def test_add_closing
     w = Weaver.new("abc")
-    w.add_closing(1, "k")
-    assert_equal "akbc", w.weave
+    w.add_closing(1, "1")
+    w.next_set
+    w.add_closing(1, "2")
+    assert_equal "a21bc", w.weave
   end
 
   def test_weave
+    # simple
     w = Weaver.new("abcde")
     w.add_opening(1, "(")
     w.add_closing(4, ")")
     w.next_set
     w.add_opening(1, "<")
     w.add_closing(4, ">")
-    assert_equal "a<(bcd)>e", w.weave
+    assert_equal "a(<bcd>)e", w.weave
+
+    # side by side
+    w2 = Weaver.new("abcdef")
+    w2.add_opening(1, "(")
+    w2.add_closing(3, ")")
+    w2.add_opening(3, "<")
+    w2.add_closing(5, ">")
+    assert_equal "a(bc)<de>f", w2.weave
   end
 
   def test_exceptions
