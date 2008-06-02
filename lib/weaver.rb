@@ -14,7 +14,7 @@
 #
 # Weaver allows one to insert tags in a running text.
 #
-# Openings are added before the given character-position, while 
+# Openings are added before the given character-position, while
 # closings are added after the given character-position.
 #
 # You should only add stuff to the weaver via add_opening and
@@ -97,7 +97,7 @@ class Weaver
     @insert_positions = []
     @set = 1
   end
-  
+
   # Sanity-checks the positions
   #
   def check_position(position)
