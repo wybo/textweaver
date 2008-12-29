@@ -2,17 +2,17 @@
 # Copyright: (c) 2008 The LogiLogi Foundation <foundation@logilogi.org>
 #
 # License:
-#   This file is part of the Weaver Library. Weaver is Free Software.
-#   You can run/distribute/modify Weaver under the terms of the GNU
-#   Affero General Public License version 3. The Affero GPL states
-#   that running a modified version or a derivative work also requires
-#   you to make the sourcecode of that work available to everyone that
-#   can interact with it. We chose the Affero GPL to ensure that
-#   Weaver remains open and libre (doc/LICENSE.txt contains the full
-#   text of the legally binding license).
+#   This file is part of the TextWeaver Library. TextWeaver is Free 
+#   Software. You can run/distribute/modify TextWeaver under the terms 
+#   of the GNU Affero General Public License version 3. The Affero GPL
+#   states that running a modified version or a derivative work also
+#   requires you to make the sourcecode of that work available to 
+#   everyone that can interact with it. We chose the Affero GPL to
+#   ensure that TextWeaver remains open and libre (doc/LICENSE.txt 
+#   contains the full text of the legally binding license).
 #++#
 #
-# Weaver allows one to insert tags in a running text.
+# TextWeaver allows one to insert tags in a running text.
 #
 # Openings are added before the given character-position, while
 # closings are added after the given character-position.
@@ -20,18 +20,19 @@
 # You should only add stuff to the weaver via add_opening and
 # add_closing.
 
-class Weaver
+class TextWeaver
   ### Attributes
+  
   attr_accessor :text
 end
 
-require 'weaver/error'
-require 'weaver/insert_position'
+require 'text_weaver/error'
+require 'text_weaver/insert_position'
 
-class Weaver
+class TextWeaver
   ### Constructors
 
-  # Initializes a new Weaver.
+  # Initializes a new TextWeaver.
   #
   def initialize(text)
     self.text = text
@@ -60,7 +61,7 @@ class Weaver
   #
   def add_opening(position, text)
     check_position(position)
-    @insert_positions << Weaver::InsertPosition.new(position, @set, text)
+    @insert_positions << TextWeaver::InsertPosition.new(position, @set, text)
   end
 
   # Adds stuff to the weaver.
@@ -71,7 +72,7 @@ class Weaver
   #
   def add_closing(position, text)
     check_position(position)
-    @insert_positions << Weaver::InsertPosition.new(position, @set * -1, text)
+    @insert_positions << TextWeaver::InsertPosition.new(position, @set * -1, text)
   end
 
   # Weaves in all stuff added via add_opening and add_closing.
@@ -81,7 +82,7 @@ class Weaver
   # (self.text remains unmodified)
   #
   def weave
-    weave_text = self.text
+    weave_text = self.text.dup
     @insert_positions.sort!
     @insert_positions.reverse.each do |i_p|
       weave_text.insert(i_p.position, i_p.text)
@@ -102,9 +103,9 @@ class Weaver
   #
   def check_position(position)
     if position > self.text.size
-      raise Weaver::Error.new(position, @set), 'Position bigger than the weaver-text'
+      raise TextWeaver::Error.new(position, @set), 'Position bigger than the weaver-text'
     elsif position < 0
-      raise Weaver::Error.new(position, @set), 'Position is negative'
+      raise TextWeaver::Error.new(position, @set), 'Position is negative'
     end
   end
 end

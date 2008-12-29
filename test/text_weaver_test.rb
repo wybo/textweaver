@@ -1,35 +1,31 @@
-#! /usr/bin/env ruby
 #--#
 # Copyright: (c) 2006-2008 The LogiLogi Foundation <foundation@logilogi.org>
 #
 # License:
-#   This file is part of the Weaver Library. Weaver is Free Software.
-#   You can run/distribute/modify Weaver under the terms of the GNU
+#   This file is part of the TextWeaver Library. TextWeaver is Free Software.
+#   You can run/distribute/modify TextWeaver under the terms of the GNU
 #   Affero General Public License version 3. The Affero GPL states
 #   that running a modified version or a derivative work also requires
 #   you to make the sourcecode of that work available to everyone that
 #   can interact with it. We chose the Affero GPL to ensure that
-#   Weaver remains open and libre (doc/LICENSE.txt contains the full
+#   TextWeaver remains open and libre (doc/LICENSE.txt contains the full
 #   text of the legally binding license).
 #++#
 
-$LOAD_PATH.unshift("#{File.dirname(__FILE__)}/../lib") if __FILE__ == $0
+require File.dirname(__FILE__) + '/test_helper.rb'
 
-require 'weaver'
-require 'test/unit'
-
-class WeaverTest < Test::Unit::TestCase
+class TextWeaverTest < Test::Unit::TestCase
   ### Initialization
 
   def test_initialize
-    w = Weaver.new("kukadopalala")
+    w = TextWeaver.new("kukadopalala")
     assert_equal "kukadopalala", w.text
   end
 
   ### Methods
 
   def test_next_set
-    w = Weaver.new("abc")
+    w = TextWeaver.new("abc")
     w.add_opening(1, ";")
     w.next_set
     w.add_opening(1, ":")
@@ -37,7 +33,7 @@ class WeaverTest < Test::Unit::TestCase
   end
 
   def test_add_opening
-    w = Weaver.new("abc")
+    w = TextWeaver.new("abc")
     w.add_opening(1, "1")
     w.next_set
     w.add_opening(1, "2")
@@ -45,7 +41,7 @@ class WeaverTest < Test::Unit::TestCase
   end
 
   def test_add_closing
-    w = Weaver.new("abc")
+    w = TextWeaver.new("abc")
     w.add_closing(1, "1")
     w.next_set
     w.add_closing(1, "2")
@@ -54,7 +50,7 @@ class WeaverTest < Test::Unit::TestCase
 
   def test_weave
     # simple
-    w = Weaver.new("abcde")
+    w = TextWeaver.new("abcde")
     w.add_opening(1, "(")
     w.add_closing(4, ")")
     w.next_set
@@ -63,22 +59,33 @@ class WeaverTest < Test::Unit::TestCase
     assert_equal "a(<bcd>)e", w.weave
 
     # side by side
-    w2 = Weaver.new("abcdef")
+    w2 = TextWeaver.new("abcdef")
     w2.add_opening(1, "(")
     w2.add_closing(3, ")")
     w2.add_opening(3, "<")
     w2.add_closing(5, ">")
     assert_equal "a(bc)<de>f", w2.weave
+
+    # multi weave
+    w3 = TextWeaver.new("abcde")
+    w3.add_opening(1, "(")
+    w3.add_closing(4, ")")
+    assert_equal "a(bcd)e", w3.weave
+
+    w3.next_set
+    w3.add_opening(1, "<")
+    w3.add_closing(4, ">")
+    assert_equal "a(<bcd>)e", w3.weave
   end
 
   def test_exceptions
-    w = Weaver.new("abc")
+    w = TextWeaver.new("abc")
 
-    assert_raise(Weaver::Error) {
+    assert_raise(TextWeaver::Error) {
       w.add_closing(-1, "a")
     }
 
-    assert_raise(Weaver::Error) {
+    assert_raise(TextWeaver::Error) {
       w.add_opening(4, "a")
     }
   end
