@@ -20,6 +20,9 @@
 # You should only add stuff to the weaver via add_opening and
 # add_closing.
 
+$:.unshift(File.dirname(__FILE__)) unless
+    $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
+
 class TextWeaver
   ### Attributes
   

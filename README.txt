@@ -11,25 +11,34 @@ http://www.logilogi.org (http://foundation.logilogi.org).
 
 == Usage
 
+First require it.
+
+  $ irb
+
+  > require 'rubygems'
+  > require 'textweaver'
+
 You can create a TextWeaver with any text.
 
-w = TextWeaver.new("abcde")
+  > w = TextWeaver.new("abcde")
 
 Then add some openings and closings.
 
-w.add_opening(1, "(")
-w.add_closing(4, ")")
+  > w.add_opening(1, "(")
+  > w.add_closing(4, ")")
 
-w.weave => "a(bcd)e"
+  > w.weave 
+  => "a(bcd)e"
 
 Possibly with additionally some different tag-types.
 
-w.next_set
+  > w.next_set
 
-w.add_opening(1, "<")
-w.add_closing(4, ">")
+  > w.add_opening(1, "<")
+  > w.add_closing(4, ">")
 
-w.weave => "a(<bcd>)e"
+  > w.weave 
+  => "a(<bcd>)e"
 
 == Download
 
