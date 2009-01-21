@@ -48,7 +48,7 @@ The latest version of Text Weaver can be found at:
 
 Documentation can be found at:
 
-* http://textweaver.rubyonrails.org
+* http://textweaver.rubyforge.org
 
 == Installation
 
