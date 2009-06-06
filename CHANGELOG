@@ -1,0 +1,26 @@
+*0.6.4* (4 June 2009)
+
+* Fixed rdoc-generation bug in README
+* Re-licensed under LGPL v3
+
+
+*0.6.3* (4 February 2009)
+
+* Updated README
+
+
+*0.6.2* (20 January 2009)
+
+* Updated link to docs in README
+
+
+*0.6.1* (31 December 2008)
+
+* Updated README
+
+* Fixed small require bug
+
+
+*0.6.0* (28 December 2008)
+
+* First release as a gem

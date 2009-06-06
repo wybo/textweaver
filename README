@@ -1,4 +1,5 @@
-= Text Weaver -- Weaves tags into text
+= Text Weaver Gem documentation
+  "Weaves any-tag into any text"
 
 Weaves html tags (or really anything) into a text at given
 opening or closing positions. Inserted tags need to be aligned
@@ -40,31 +41,19 @@ Possibly with additionally some different tag-types.
   > w.weave 
   => "a(<bcd>)e"
 
-== Download
-
-The latest version of Text Weaver can be found at:
-
-* http://rubyforge.org/frs/?group_id=7566
-
-Documentation can be found at:
-
-* http://textweaver.rubyforge.org
-
 == Installation
 
 You can install Text Weaver with the following command:
 
   % [sudo] gem install textweaver
 
-Or from its distribution directory with:
+The latest version of Text Weaver can also be downloaded at:
+
+* http://rubyforge.org/frs/?group_id=7566
+
+And then from its distribution directory installed with:
 
   % [sudo] ruby install.rb
-
-== License
-
-Text Weaver is released under the GNU Affero GPL licence.
-
-* http://www.fsf.org/licensing/licenses/agpl-3.0.html
 
 == Support
 
@@ -76,3 +65,20 @@ For the latest news on Text Weaver:
 
 Feel free to submit commits or feature requests. If you send a patch,
 remember to update the corresponding unit tests.
+
+== This Documentation
+
+This documentation can be browsed online at:
+
+* http://textweaver.rubyforge.org
+
+== Copyrights
+
+Text Weaver and these docs are Copyright (c) 2006-2009 The LogiLogi
+Foundation. Text Weaver is licensed under the {GNU Lesser General
+Public License}[http://www.gnu.org/licenses/lgpl-3.0-standalone.html].
+These docs are available under the {Creative Commons Attribution-Share
+Alike License}[http://creativecommons.org/licenses/by-sa/3.0/].
+
+You can use Text Weaver in an application that is not Free Software
+but Text Weaver itself remains Free Software.
