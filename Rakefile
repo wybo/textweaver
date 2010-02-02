@@ -31,7 +31,7 @@ Rake::TestTask.new { |t|
 # Generate the RDoc documentation
 Rake::RDocTask.new { |rdoc|
   rdoc.rdoc_dir = 'doc'
-  rdoc.title    = "Text Weaver -- Weaves tags into text"
+  rdoc.title    = "Text Weaver -- Weaves any tag into any text"
   rdoc.options << '--line-numbers' << '--inline-source' << '-A cattr_accessor=object'
   rdoc.options << '--charset' << 'utf-8'
   rdoc.rdoc_files.include('README', 'CHANGELOG')
@@ -43,7 +43,7 @@ Rake::RDocTask.new { |rdoc|
 spec = Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.name = PKG_NAME
-  s.summary = "Weaves html tags into a text."
+  s.summary = "Weaves any tag into any text."
   s.description = %q{Allows you to weave html tags into a text.}
   s.version = PKG_VERSION
 

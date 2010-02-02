@@ -1,15 +1,13 @@
 #--#
-# Copyright: (c) 2008 The LogiLogi Foundation <foundation@logilogi.org>
+# Copyright: (c) 2006-2009 The LogiLogi Foundation <foundation@logilogi.org>
 #
 # License:
 #   This file is part of the TextWeaver Library. TextWeaver is Free 
 #   Software. You can run/distribute/modify TextWeaver under the terms 
-#   of the GNU Affero General Public License version 3. The Affero GPL
-#   states that running a modified version or a derivative work also
-#   requires you to make the sourcecode of that work available to 
-#   everyone that can interact with it. We chose the Affero GPL to
-#   ensure that TextWeaver remains open and libre (doc/LICENSE.txt 
-#   contains the full text of the legally binding license).
+#   of the GNU Lesser General Public License version 3. This license
+#   states that you can use TextWeaver in applications that are not Free 
+#   Software but TextWeaver itself remains Free Software. (LICENSE contains 
+#   the full text of the legally binding license).
 #++#
 #
 # TextWeaver allows one to insert tags in a running text.
