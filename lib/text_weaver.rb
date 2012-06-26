@@ -1,13 +1,7 @@
 #--#
-# Copyright: (c) 2006-2009 The LogiLogi Foundation <foundation@logilogi.org>
+# Copyright: (c) 2006-2012 Wybo Wiersma <mail@wybowiersma.net>
 #
-# License:
-#   This file is part of the TextWeaver Library. TextWeaver is Free 
-#   Software. You can run/distribute/modify TextWeaver under the terms 
-#   of the GNU Lesser General Public License version 3. This license
-#   states that you can use TextWeaver in applications that are not Free 
-#   Software but TextWeaver itself remains Free Software. (LICENSE contains 
-#   the full text of the legally binding license).
+# MIT Licensed
 #++#
 #
 # TextWeaver allows one to insert tags in a running text.
@@ -18,19 +12,15 @@
 # You should only add stuff to the weaver via add_opening and
 # add_closing.
 
-$:.unshift(File.dirname(__FILE__)) unless
-    $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
+require 'text_weaver/version'
+require 'text_weaver/error'
+require 'text_weaver/insert_position'
 
 class TextWeaver
   ### Attributes
   
   attr_accessor :text
-end
 
-require 'text_weaver/error'
-require 'text_weaver/insert_position'
-
-class TextWeaver
   ### Constructors
 
   # Initializes a new TextWeaver.
